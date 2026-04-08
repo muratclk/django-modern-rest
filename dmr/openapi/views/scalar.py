@@ -33,7 +33,7 @@ class ScalarView(OpenAPIView):
             self.template_name,
             context={
                 'title': self.schema.info.title,
-                'schema': self.dumps(self.schema.convert()),
+                'schema': self.schema.convert(),
                 'scalar_cdn': cdn_config.get('scalar'),
             },
             content_type=self.content_type,

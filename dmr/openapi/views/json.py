@@ -2,6 +2,7 @@ from typing import ClassVar
 
 from django.http import HttpRequest, HttpResponse
 
+from dmr.internal.json import json_dumps
 from dmr.openapi.views.base import OpenAPIView
 
 
@@ -24,6 +25,6 @@ class OpenAPIJsonView(OpenAPIView):
     def get(self, request: HttpRequest) -> HttpResponse:
         """Render the OpenAPI schema as JSON response."""
         return HttpResponse(
-            content=self.dumps(self.schema.convert()),
+            content=json_dumps(self.schema.convert()),
             content_type=self.content_type,
         )
